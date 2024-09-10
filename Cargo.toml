@@ -1,0 +1,17 @@
+[package]
+name = "rquickjs-llrt-demo"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "rquickjs-llrt-demo"
+repository = "https://github.com/ahaoboy/rquickjs-llrt-demo"
+homepage = "https://github.com/ahaoboy/rquickjs-llrt-demo"
+authors = ["ahaoboy"]
+
+[dependencies]
+rquickjs = { version = "0.6.2", features = ["loader"] }
+anyhow = "1.0.87"
+llrt_modules = { git = "https://github.com/awslabs/llrt" }
+
+[profile.release]
+opt-level = 3
