@@ -1,4 +1,4 @@
-use llrt_modules::{os::OsModule, path::PathModule, url::UrlModule};
+use llrt_modules::{os::OsModule, path::PathModule, url::{UrlModule,init}};
 use rquickjs::{
     loader::{BuiltinResolver, ModuleLoader},
     Context, Function, Module, Runtime, Value,
@@ -23,8 +23,13 @@ fn main() {
     );
     runtime.set_loader(resolver, loader);
 
+
     context.with(|ctx| {
+
         let global = ctx.globals();
+
+        init(&ctx).unwrap();
+
         global
             .set("print", Function::new(ctx.clone(), print))
             .unwrap();
