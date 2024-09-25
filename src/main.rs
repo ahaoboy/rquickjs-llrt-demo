@@ -31,11 +31,11 @@ fn main() {
 
         let name = "osvg.js";
         let code = r#"
-// import os from 'os'
-// print(typeof os.EOL)
+import os from 'os'
+print(typeof os.EOL)
 
-// import url from 'url'
-// print(typeof url)
+import url from 'url'
+print(typeof url)
 
 import path from 'path'
 print(typeof path)

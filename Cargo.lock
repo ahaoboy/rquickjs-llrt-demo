@@ -19,9 +19,9 @@ checksum = "512761e0bb2578dd7380c6baaa0f4ce03e84f95e960231d1dec8bf4d7d6e2627"
 
 [[package]]
 name = "anyhow"
-version = "1.0.87"
+version = "1.0.89"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "10f00e1f6e58a40e807377c75c6a7f97bf9044fab57816f2414e6f5f4499d7b8"
+checksum = "86fdf8605db99b54d3cd748a44c6d04df638eb5dafb219b135d0149bd0db01f6"
 
 [[package]]
 name = "async-lock"
@@ -343,7 +343,7 @@ dependencies = [
 [[package]]
 name = "llrt_modules"
 version = "0.2.2-beta"
-source = "git+https://github.com/awslabs/llrt#9a4afce22b7d99f3675614eea34eb974b09c3cec"
+source = "git+https://github.com/awslabs/llrt?rev=66603cdadc4a9817c0a7c31e22e549d07e724163#66603cdadc4a9817c0a7c31e22e549d07e724163"
 dependencies = [
  "brotlic",
  "crc32c",
@@ -354,6 +354,7 @@ dependencies = [
  "libc",
  "llrt_utils",
  "md-5",
+ "memchr",
  "once_cell",
  "rand",
  "ring",
@@ -371,7 +372,7 @@ dependencies = [
 [[package]]
 name = "llrt_utils"
 version = "0.2.2-beta"
-source = "git+https://github.com/awslabs/llrt#9a4afce22b7d99f3675614eea34eb974b09c3cec"
+source = "git+https://github.com/awslabs/llrt?rev=66603cdadc4a9817c0a7c31e22e549d07e724163#66603cdadc4a9817c0a7c31e22e549d07e724163"
 dependencies = [
  "base64-simd",
  "hex-simd",

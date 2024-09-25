@@ -10,8 +10,8 @@ authors = ["ahaoboy"]
 
 [dependencies]
 rquickjs = { version = "0.6.2", features = ["loader"] }
-anyhow = "1.0.87"
-llrt_modules = { git = "https://github.com/awslabs/llrt" }
+anyhow = "1.0.89"
+llrt_modules = { git = "https://github.com/awslabs/llrt", rev = "66603cdadc4a9817c0a7c31e22e549d07e724163" }
 
 [profile.release]
 debug = false
