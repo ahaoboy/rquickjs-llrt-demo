@@ -1,4 +1,4 @@
-use llrt_modules::{os::OsModule, path::PathModule, url::{UrlModule,init}};
+use llrt_modules::{os::OsModule, path::PathModule,fs::FsModule, url::{UrlModule,init}};
 use rquickjs::{
     loader::{BuiltinResolver, ModuleLoader},
     Context, Function, Module, Runtime, Value,
@@ -14,11 +14,13 @@ fn main() {
     let loader = (ModuleLoader::default()
         .with_module("path", PathModule)
         .with_module("url", UrlModule)
+        .with_module("fs", FsModule)
         .with_module("os", OsModule),);
     let resolver = (
       BuiltinResolver::default()
       .with_module("path")
       .with_module("url")
+      .with_module("fs")
       .with_module("os"),
     );
     runtime.set_loader(resolver, loader);
@@ -44,7 +46,14 @@ print(typeof url)
 
 import path from 'path'
 print(typeof path)
+const cwd = path.resolve(".")
+print(cwd)
 
+import fs from 'fs'
+print(typeof fs)
+
+const p = path.join(cwd, 'Cargo.toml')
+print(fs.readFileSync(p, 'utf-8'))
 "#;
         Module::evaluate(ctx.clone(), name, code)
             .unwrap()
