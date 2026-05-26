@@ -1,4 +1,12 @@
-use llrt_modules::{os::OsModule, path::PathModule,fs::FsModule, url::{UrlModule,init}};
+use llrt_modules::{
+    assert::AssertModule,
+    fs::FsModule,
+    os::OsModule,
+    path::PathModule,
+    url::{init, UrlModule},
+
+        child_process::ChildProcessModule,
+};
 use rquickjs::{
     loader::{BuiltinResolver, ModuleLoader},
     Context, Function, Module, Runtime, Value,
@@ -15,19 +23,20 @@ fn main() {
         .with_module("path", PathModule)
         .with_module("url", UrlModule)
         .with_module("fs", FsModule)
-        .with_module("os", OsModule),);
-    let resolver = (
-      BuiltinResolver::default()
-      .with_module("path")
-      .with_module("url")
-      .with_module("fs")
-      .with_module("os"),
-    );
+        .with_module("os", OsModule)
+        .with_module("child-process", ChildProcessModule)
+        .with_module("assert", AssertModule),);
+
+    let resolver = (BuiltinResolver::default()
+        .with_module("path")
+        .with_module("url")
+        .with_module("fs")
+        .with_module("assert")
+        .with_module("child-process")
+        .with_module("os"),);
     runtime.set_loader(resolver, loader);
 
-
     context.with(|ctx| {
-
         let global = ctx.globals();
 
         init(&ctx).unwrap();
@@ -54,6 +63,13 @@ print(typeof fs)
 
 const p = path.join(cwd, 'Cargo.toml')
 print(fs.readFileSync(p, 'utf-8'))
+
+import {   spawn } from 'child-process'
+
+// print(execSync('echo hello world').toString())
+
+spawn('echo', ['hello world'] )
+
 "#;
         Module::evaluate(ctx.clone(), name, code)
             .unwrap()
