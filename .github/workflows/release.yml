@@ -5,8 +5,9 @@ permissions:
 
 on:
   push:
-    tags:
-      - v[0-9]+.*
+    branches:
+      - main
+
 jobs:
   create-release:
     runs-on: ubuntu-latest
@@ -35,4 +36,4 @@ jobs:
           target: ${{ matrix.target }}
           token: ${{ secrets.GITHUB_TOKEN }}
         env:
-          RUSTFLAGS:  ${{ matrix.RUSTFLAGS }}
+          RUSTFLAGS: ${{ matrix.RUSTFLAGS }}
