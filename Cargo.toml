@@ -16,7 +16,7 @@ authors = ["ahaoboy"]
 #   "loader",
 # ], default-features = false, git = "https://github.com/DelSkayn/rquickjs.git" }
 # rquickjs = { version = "0.11", features = ["loader"], default-features = false }
-rquickjs = { version = "0.11", git = "https://github.com/DelSkayn/rquickjs", features = ["loader"], default-features = false }
+rquickjs = { version = "0.12", features = ["loader"], default-features = false }
 anyhow = "1"
 llrt_modules = { git = "https://github.com/awslabs/llrt", features = [] }
 
